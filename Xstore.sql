@@ -1,80 +1,77 @@
-﻿CREATE DATABASE Xstore
-USE Xstore
-
 USE master
-Drop DATABASE Xstore
-
-
-select * from nhanvien
-select * from TaiKhoan
+GO
+CREATE DATABASE XSTORE
+GO
+USE XSTORE
+GO
 
 CREATE TABLE CaLam(
-	MaCL varchar(10) primary key,
-	TenCL nvarchar(100),
-	GioBatDau varchar(100),
-	GioKetThuc varchar(100),
-	GhiChu nvarchar(100)
+MaCL 			varchar(10) primary key,
+TenCL 			nvarchar(100),
+GioBatDau 		varchar(100),
+GioKetThuc 		varchar(100),
+GhiChu 			nvarchar(100)
 )
 
 CREATE TABLE NhanVien (
-    MaNV varchar(10) primary key,
-    TenNV nvarchar(100),
-	NgayVaoLam date,
-	CCCD varchar(100),
-	Email varchar(100),
-    Sdt varchar(15),
-    VaiTro nvarchar(100),
-    MaCL varchar(10) references CaLam(MaCL),
-	NgaySinh date,
-    GioiTinh bit,
-	DiaChi nvarchar(500),
-    TrangThai nvarchar(50),
-	VerificationCode VARCHAR(10)
+MaNV 			varchar(10) primary key,
+TenNV 			nvarchar(100),
+NgayVaoLam 		date,
+CCCD 			varchar(100),
+Email 			varchar(100),
+Sdt 			varchar(15),
+VaiTro			nvarchar(100),
+MaCL 			varchar(10) references CaLam(MaCL),
+NgaySinh 		date,
+GioiTinh 		bit,
+DiaChi			nvarchar(500),
+TrangThai		nvarchar(50),
+VerificationCode 	VARCHAR(10)
 )
 
 CREATE TABLE TaiKhoan (
-    MaTK varchar(10) primary key,
-    TenDangNhap varchar(100),
-    MatKhau varchar(100),
-    MaNV varchar(10) unique,
+MaTK 		varchar(10) primary key,
+TenDangNhap 	varchar(100),
+MatKhau 	varchar(100),
+MaNV 		varchar(10) unique,
     foreign key (MaNV) references NhanVien(MaNV)
 )
 CREATE TABLE KhachHang(
-	MaKH varchar(10) primary key,
-	TenKH nvarchar(100),
-	NgayTao date,
-	NgaySinh date,
-	GioiTinh bit,
-	Sdt varchar(15),
-	DiaChi nvarchar(100),
-	TrangThai bit
+MaKH 			varchar(10) primary key,
+TenKH 			nvarchar(100),
+NgayTao			date,
+NgaySinh		date,
+GioiTinh 		bit,
+Sdt 			varchar(15),
+DiaChi 			nvarchar(100),
+TrangThai 		bit
 )
 
 CREATE TABLE MauSac(
-	IdMauSac int identity(1,1) primary key,
-	TenMauSac nvarchar(100)
+IdMauSac 		int identity(1,1) primary key,
+TenMauSac 		nvarchar(100)
 )
 
 CREATE TABLE Size(
-	IdSize int identity(1,1) primary key,
-	TenSize nvarchar(100)
+IdSize 		int identity(1,1) primary key,
+TenSize 	nvarchar(100)
 )
 
 CREATE TABLE ChatLieu(
-	IdChatLieu int identity(1,1) primary key,
-	TenChatLieu nvarchar(100)
+IdChatLieu 	int identity(1,1) primary key,
+TenChatLieu 	nvarchar(100)
 )
 
 CREATE TABLE Hang(
-	IdHang int identity(1,1) primary key,
-	TenHang nvarchar(100)
+IdHang 			int identity(1,1) primary key,
+TenHang 		nvarchar(100)
 )
 
 CREATE TABLE SanPham(
-	MaSP varchar(10) primary key,
-	TenSP nvarchar(100),
-	SoLuongTong int,
-	TrangThai bit
+MaSP 			varchar(10) primary key,
+TenSP 			nvarchar(100),
+SoLuongTong 		int,
+TrangThai 		bit
 )
 
 CREATE TABLE CTSP(
